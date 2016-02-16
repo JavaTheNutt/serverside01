@@ -1,0 +1,24 @@
+div#jumbo {
+    margin-top: 0;
+    background-color: #383836;
+    color: #9C9A95;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+div#navBar {
+    margin-bottom: 0;
+}
+
+ul.navButtons {
+    display: inline;
+}
+
+li#navButton2 {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+.invalid{
+    border: solid red 1px;
+    color: red;
+}
