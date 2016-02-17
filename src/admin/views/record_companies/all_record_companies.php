@@ -22,7 +22,7 @@ $count = count($result);
 if ($count > 0) {
 	displayFullCompanies($result);
 } else {
-	echo 'No record companies';
+	echo '<br>No record companies';
 }
 ?>
 <?php

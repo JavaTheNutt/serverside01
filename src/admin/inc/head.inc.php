@@ -26,7 +26,7 @@
 				<li>
 					<a class="btn btn-primary navbar-btn" href="/assignment03/src/admin/views/record_companies/all_record_companies.php"
 					   id="navButton1">Record Companies</a>
-					<a class="btn btn-danger navbar-btn" href="#" id="navButton2">Artists</a>
+					<a class="btn btn-danger navbar-btn" href="/assignment03/src/admin/views/artists/all_artists.php" id="navButton2">Artists</a>
 					<a class="btn btn-warning navbar-btn" href="#" id="navButton3">Albums</a>
 				</li>
 			</ul>

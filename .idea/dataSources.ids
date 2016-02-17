@@ -75,10 +75,10 @@
         <data-type>varchar(20)</data-type>
       </column>
       <column id="20" parent="3" name="city">
-        <data-type>int(11)</data-type>
+        <data-type>varchar(20)</data-type>
       </column>
       <column id="21" parent="3" name="website">
-        <data-type>varchar(20)</data-type>
+        <data-type>varchar(50)</data-type>
       </column>
       <index id="22" parent="3" name="name">
         <columns>name</columns>
