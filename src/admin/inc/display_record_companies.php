@@ -18,19 +18,21 @@ function displayFullCompanies($result)
 			<?php
 
 			foreach ($result as $row) {
-				$compid = $row->comapnyid;
+				$compid = $row->companyid;
 				?>
 				<tr>
 					<td><?php echo $row->companyname ?></td>
 					<td><?php echo $row->companycity ?></td>
 					<td><?php echo $row->representative ?></td>
-					<td><?php echo $row->represenativeemail ?></td>
+					<td><?php echo $row->representativeemail ?></td>
 					<td><?php echo $row->website ?></td>
 					<td>
-						<a class="btn btn-default" href="../views/edit_record_company.php?recordcompany=$compid"><span class="glyphicon glyphicon-edit"
-														 aria-hidden="true"></span> </a>
-						<a class="btn btn-default"><span class="glyphicon glyphicon-trash"
-														 aria-hidden="true"></span> </a>
+						<?php
+						echo "<a class='btn btn-default' href='edit_record_company.php?recordcompany=$compid'><span class='glyphicon glyphicon-edit'
+														 aria-hidden='true'></span> </a>";
+						echo "<a class='btn btn-default' href='delete_record_company.php?recordcompany=$compid'><span class='glyphicon glyphicon-trash'
+														 aria-hidden='true'></span> </a>";
+						?>
 					</td>
 				</tr>
 				<?php
@@ -42,7 +44,8 @@ function displayFullCompanies($result)
 	<?php
 }
 
-function receiveOneCompany($result){
+function receiveOneCompany($result)
+{
 	global $companyname, $companycity, $representative, $representativeemail, $website;
 	$companyname = $result->companyname;
 	$companycity = $result->companycity;
