@@ -17,13 +17,13 @@ function displayFullArtists($results){
 				$artistid = $row->artistid;
 				?>
 				<tr>
-					<td><?php echo $row->name ?></td>
+					<td><?php echo $row->artistname ?></td>
 					<td><?php echo $row->city ?></td>
 					<td><?php echo $row->website ?></td>
 					<td>
 						<?php
 						echo "<a class='btn btn-default' href='edit_artist.php?artist=$artistid'><span class='glyphicon glyphicon-edit' aria-hidden='true'></span> </a>" ;
-						echo "<a class='btn btn-default' href='#'><span class='glyphicon glyphicon-trash' aria-hidden='true'></span> </a>" ;
+						echo "<a class='btn btn-default' href='delete_artist.php?artist=$artistid'><span class='glyphicon glyphicon-trash' aria-hidden='true'></span> </a>" ;
 						?>
 					</td>
 				</tr>
@@ -38,7 +38,7 @@ function displayFullArtists($results){
 
 function receiveOneArtist($result){
 	global $artistname, $artistcity, $artistwebsite;
-	$artistname = $result->name;
+	$artistname = $result->artistname;
 	$artistcity = $result->city;
 	$artistwebsite = $result->website;
 

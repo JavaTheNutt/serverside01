@@ -22,3 +22,11 @@ li#navButton2 {
     border: solid red 1px;
     color: red;
 }
+.panel-default > .panel-heading{
+    background-color: #383836;
+    background-image: none;
+    color: #9C9A95;
+}
+.panel-default{
+    border: solid black 1px;
+}

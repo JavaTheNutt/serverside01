@@ -5,6 +5,10 @@ if(isset($_GET['stat'])){
 	$stat= $_GET['stat'];
 	if($stat == 'add'){
 		echo '<br><h2>Artist added successfully</h2>';
+	} elseif($stat == 'edit'){
+		echo '<br><h2>Artist edited successfully</h2>';
+	} else{
+		echo '<br><h2>Artist deleted successfully</h2>';
 	}
 }
 ?>
