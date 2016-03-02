@@ -18,15 +18,22 @@ li#navButton2 {
     margin-left: 5px;
     margin-right: 5px;
 }
-.invalid{
+
+.invalid {
     border: solid red 1px;
     color: red;
 }
-.panel-default > .panel-heading{
+
+.panel-default > .panel-heading {
     background-color: #383836;
     background-image: none;
     color: #9C9A95;
 }
-.panel-default{
+
+.panel-default {
     border: solid black 1px;
+}
+
+.hidden {
+    display: none;
 }

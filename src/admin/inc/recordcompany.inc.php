@@ -3,10 +3,13 @@
 class RecordCompany
 {
 	private $db;
+	public $formId;
+	public $fields = array('companyname'=> 'Company Name', 'companycity' => 'Company City', 'representative'=> 'Representative', 'representativeemail'=> 'Representative Email', 'website'=>'Website');
 
 	public function __construct($database)
 	{
 		$this->db = $database;
+		$this->formId = 'recordSearchBox';
 	}
 
 	public function allRecordCompanies()
@@ -30,11 +33,10 @@ class RecordCompany
 
 	public function findRecordCompanies($field, $value)
 	{
-		$sql = 'SELECT * FROM recordcompanies WHERE :field LIKE :value';
-		$value = '%' . $value . '%';
+		$sql = "SELECT * FROM recordcompanies WHERE $field LIKE :value";
 		$stmt = $this->db->prepare($sql);
-		$stmt->bindParam(':field', $field, PDO::PARAM_STR);
-		$stmt-> bindParam(':value', $value, PDO::PARAM_STR);
+		$value = '%' . $value . '%';
+		$stmt->bindParam(':value', $value, PDO::PARAM_STR);
 		$stmt->execute();
 		return $stmt->fetchAll(PDO::FETCH_OBJ);
 	}
@@ -48,7 +50,7 @@ class RecordCompany
 		$stmt->bindParam(':rep', $rep, PDO::PARAM_STR);
 		$stmt->bindParam(':email', $email, PDO::PARAM_STR);
 		$stmt->bindParam(':website', $website, PDO::PARAM_STR);
-		$stmt -> execute();
+		$stmt->execute();
 	}
 
 	public function updateRecord($compid, $rep, $email, $website)
@@ -62,9 +64,21 @@ class RecordCompany
 		$stmt->bindParam(':website', $website, PDO::PARAM_STR);
 		$stmt->execute();
 	}
-	public function deleteRecord($compid){
-		$stmt =$this->db->prepare("DELETE FROM recordcompanies WHERE companyid = :compid");
+
+	public function deleteRecord($compid)
+	{
+		$stmt = $this->db->prepare("DELETE FROM recordcompanies WHERE companyid = :compid");
 		$stmt->bindParam(':compid', $compid, PDO::PARAM_INT);
 		$stmt->execute();
+	}
+
+	public function searchRecords($field, $value)
+	{
+		$stmt = $this->db->prepare("SELECT * FROM recordcompanies WHERE :field LIKE :val");
+		$value = "%" . $value . "%";
+		$stmt->bindParam(':field', $field, PDO::PARAM_STR);
+		$stmt->bindParam(':val', $value, PDO::PARAM_STR);
+		$stmt->execute();
+		return $stmt->fetchAll(PDO::FETCH_OBJ);
 	}
 }

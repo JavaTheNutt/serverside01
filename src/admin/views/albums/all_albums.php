@@ -1,13 +1,13 @@
 <?php
 require_once '../../inc/init.inc.php';
 require_once '../../inc/head.inc.php';
-if(isset($_GET['stat'])){
-	$stat= $_GET['stat'];
-	if($stat == 'add'){
+if (isset($_GET['stat'])) {
+	$stat = $_GET['stat'];
+	if ($stat == 'add') {
 		echo '<br><h2>Album added successfully</h2>';
-	} elseif($stat == 'edit'){
+	} elseif ($stat == 'edit') {
 		echo '<br><h2>Album edited successfully</h2>';
-	} else{
+	} else {
 		echo '<br><h2>Album deleted successfully</h2>';
 	}
 }
@@ -19,12 +19,13 @@ $count = count($result);
 			Album</a>
 	</div>
 <?php
-if($count > 0){
-displayAlbums($result);
-} else{
+if ($count > 0) {
+	displayAlbums($result);
+} else {
 	echo '<br>No albums';
 }
 ?>
 
 <?php
+require_once '../../inc/scripts.inc.php';
 require_once '../../inc/foot.inc.php';

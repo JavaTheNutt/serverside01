@@ -1,17 +1,18 @@
 <?php
 require_once '../../inc/init.inc.php';
 require_once '../../inc/head.inc.php';
-if(isset($_REQUEST['Submit'])){
+if (isset($_REQUEST['Submit'])) {
 	$name = $_POST['album_name'];
 	$year = $_POST['album_year'];
 	$genre = $_POST['genre'];
 	$artistid = $_POST['artist'];
 	$companyid = $_POST['recordcompany'];
-	try{
-		$album->insertAlbum($name, $year, $genre, $artistid, $companyid);
+	$albumartwork = $_POST['album_artwork'];
+	try {
+		$album->insertAlbum($name, $year, $genre, $artistid, $companyid, $albumartwork);
 		$stat = 'add';
 		header("Location:all_albums.php?stat=$stat");
-	}catch (PDOException $e) {
+	} catch (PDOException $e) {
 		echo '<br>PDO Exception Caught.';
 		echo 'Error with the database: <br>';
 		echo 'Error: ' . $e->getMessage() . '</p>';
@@ -70,7 +71,14 @@ if(isset($_REQUEST['Submit'])){
 					</select>
 				</div>
 				<div class="col-sm-1">
-					<a href="../artists/add_artist.php" class="btn btn-primary">Add Artist</a>
+					<a href="../artists/add_artist.php?ref=album" class="btn btn-primary">Add Artist</a>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="album_artwork" class="col-sm-3 control-label">Artwork URL</label>
+				<div class="col-sm-9">
+					<input type="url" name="album_artwork" id="album_artwork" class="form-control" required
+						   title="Please enter the URL of the album artwork">
 				</div>
 			</div>
 			<div class="form-group">
@@ -88,7 +96,7 @@ if(isset($_REQUEST['Submit'])){
 					</select>
 				</div>
 				<div class="col-sm-1">
-					<a href="../record_companies/add_record_company.php" class="btn btn-primary">Add Label</a>
+					<a href="../record_companies/add_record_company.php?ref=album" class="btn btn-primary">Add Label</a>
 				</div>
 			</div>
 			<div class="form-group">
@@ -101,4 +109,5 @@ if(isset($_REQUEST['Submit'])){
 	</form>
 	<?php
 }
+require_once '../../inc/scripts.inc.php';
 require_once '../../inc/foot.inc.php';

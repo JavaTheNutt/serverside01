@@ -1,31 +1,31 @@
 <?php
 require_once '../../inc/init.inc.php';
 require_once '../../inc/head.inc.php';
-if(isset($_REQUEST['Submit'])){
-	try{
+if (isset($_REQUEST['Submit'])) {
+	try {
 		$id = $_POST['artistid'];
 		$website = $_POST['artist_website'];
 		$artist->updateArtist($id, $website);
-		$stat= 'edit';
+		$stat = 'edit';
 		header("Location:all_artists.php?stat=$stat");
-	}catch (PDOException $e) {
+	} catch (PDOException $e) {
 		echo '<br>PDO Exception Caught.';
 		echo 'Error with the database: <br>';
 		echo 'Error: ' . $e->getMessage() . '</p>';
 	}
 } else {
 	$id = $_GET['artist'];
-	try{
+	try {
 		$resultArtist = $artist->oneArtist($id);
 		receiveOneArtist($resultArtist);
-	}catch(PDOException $e){
+	} catch (PDOException $e) {
 		echo '<br>PDO Exception Caught.';
 		echo 'Error with the database: <br>';
-		echo 'Error: ' . $e->getMessage().'</p>';
+		echo 'Error: ' . $e->getMessage() . '</p>';
 	}
 
 }
-	?>
+?>
 	<form action="" class="form-horizontal" method="post" id="edit_artist" name="edit_artist">
 		<fieldset>
 			<legend>Edit an artist</legend>
@@ -41,14 +41,16 @@ if(isset($_REQUEST['Submit'])){
 				<label for="artist_city" class="col-sm-3 control-label">Artist City</label>
 				<div class="col-sm-9">
 					<input type="text" name="artist_city" id="artist_city" class="form-control" required
-						   pattern="[A-Za-z ]{3,}" title="Please enter a valid City" disabled value="<?php echo $artistcity ?>">
+						   pattern="[A-Za-z ]{3,}" title="Please enter a valid City" disabled
+						   value="<?php echo $artistcity ?>">
 				</div>
 			</div>
 			<div class="form-group">
 				<label for="artist_website" class="col-sm-3 control-label">Artist Website</label>
 				<div class="col-sm-9">
 					<input type="text" name="artist_website" id="artist_website" class="form-control" required
-						   pattern="https?://[a-zA-Z]{3}\.[a-zA-Z0-9]{2,}\.[a-zA-Z0-9]{2,}" value="<?php echo $artistwebsite ?>"
+						   pattern="https?://[a-zA-Z]{3}\.[a-zA-Z0-9]{2,}\.[a-zA-Z0-9]{2,}"
+						   value="<?php echo $artistwebsite ?>"
 						   title="Please enter a valid url">
 				</div>
 			</div>
@@ -60,6 +62,6 @@ if(isset($_REQUEST['Submit'])){
 			</div>
 		</fieldset>
 	</form>
-	<?php
-
+<?php
+require_once '../../inc/scripts.inc.php';
 require_once '../../inc/foot.inc.php';

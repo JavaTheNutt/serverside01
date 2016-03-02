@@ -1,15 +1,19 @@
 <?php
 require_once '../../inc/init.inc.php';
 require_once '../../inc/head.inc.php';
-if(isset($_REQUEST['Submit'])){
+if (isset($_REQUEST['Submit'])) {
 	$name = $_POST['artist_name'];
 	$city = $_POST['artist_city'];
 	$website = $_POST['artist_website'];
-	try{
+	try {
 		$artist->insertArtist($name, $city, $website);
-		$stat= 'add';
-		header("Location:all_artists.php?stat=$stat");
-	}catch (PDOException $e) {
+		$stat = 'add';
+		if (isset($_POST['referrer'])) {
+			header("Location:../albums/add_album.php");
+		} else {
+			header("Location:all_artists.php?stat=$stat");
+		}
+	} catch (PDOException $e) {
 		echo '<br>PDO Exception Caught.';
 		echo 'Error with the database: <br>';
 		echo 'Error: ' . $e->getMessage() . '</p>';
@@ -19,6 +23,10 @@ if(isset($_REQUEST['Submit'])){
 	<form action="" class="form-horizontal" method="post" id="insert_artist" name="insert_artist">
 		<fieldset>
 			<legend>Please enter an artist</legend>
+			<?php if (isset($_GET['ref'])) {
+				$ref_page = $_GET['ref'];
+				echo "<input type='hidden' name='referrer' id='referrer' value='$ref_page'>";
+			} ?>
 			<div class="form-group">
 				<label for="artist_name" class="col-sm-3 control-label">Artist Name</label>
 				<div class="col-sm-9">
@@ -51,4 +59,5 @@ if(isset($_REQUEST['Submit'])){
 	</form>
 	<?php
 }
+require_once '../../inc/scripts.inc.php';
 require_once '../../inc/foot.inc.php';

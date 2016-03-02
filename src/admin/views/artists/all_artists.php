@@ -1,13 +1,13 @@
 <?php
 require_once '../../inc/init.inc.php';
 require_once '../../inc/head.inc.php';
-if(isset($_GET['stat'])){
-	$stat= $_GET['stat'];
-	if($stat == 'add'){
+if (isset($_GET['stat'])) {
+	$stat = $_GET['stat'];
+	if ($stat == 'add') {
 		echo '<br><h2>Artist added successfully</h2>';
-	} elseif($stat == 'edit'){
+	} elseif ($stat == 'edit') {
 		echo '<br><h2>Artist edited successfully</h2>';
-	} else{
+	} else {
 		echo '<br><h2>Artist deleted successfully</h2>';
 	}
 }
@@ -18,10 +18,11 @@ if(isset($_GET['stat'])){
 	</div>
 <?php
 $result = $artist->allArtists();
-$count  = count($result);
-if($count > 0){
+$count = count($result);
+if ($count > 0) {
 	displayFullArtists($result);
 } else {
 	echo '<br>No artists';
 }
+require_once '../../inc/scripts.inc.php';
 require_once '../../inc/foot.inc.php';

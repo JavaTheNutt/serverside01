@@ -39,4 +39,4 @@
 <div class="jumbotron text-center" id="jumbo">
 	<h1>Welcome to the Music Store</h1>
 </div>
-<div class="container">
+<div class="container-fluid">

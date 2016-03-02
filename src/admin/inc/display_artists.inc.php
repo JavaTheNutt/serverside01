@@ -1,5 +1,6 @@
 <?php
-function displayFullArtists($results){
+function displayFullArtists($results)
+{
 	?>
 	<div class="table-responsive">
 		<table class="table table-hover table-striped table-condensed">
@@ -22,8 +23,8 @@ function displayFullArtists($results){
 					<td><?php echo $row->website ?></td>
 					<td>
 						<?php
-						echo "<a class='btn btn-default' href='edit_artist.php?artist=$artistid'><span class='glyphicon glyphicon-edit' aria-hidden='true'></span> </a>" ;
-						echo "<a class='btn btn-default' href='delete_artist.php?artist=$artistid'><span class='glyphicon glyphicon-trash' aria-hidden='true'></span> </a>" ;
+						echo "<a class='btn btn-default' href='edit_artist.php?artist=$artistid'><span class='glyphicon glyphicon-edit' aria-hidden='true'></span> </a>";
+						echo "<a class='btn btn-default' href='delete_artist.php?artist=$artistid'><span class='glyphicon glyphicon-trash' aria-hidden='true'></span> </a>";
 						?>
 					</td>
 				</tr>
@@ -36,7 +37,8 @@ function displayFullArtists($results){
 	<?php
 }
 
-function receiveOneArtist($result){
+function receiveOneArtist($result)
+{
 	global $artistname, $artistcity, $artistwebsite;
 	$artistname = $result->artistname;
 	$artistcity = $result->city;

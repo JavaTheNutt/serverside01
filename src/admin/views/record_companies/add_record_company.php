@@ -10,7 +10,11 @@ if (isset($_REQUEST['Submit'])) {
 	try {
 		$recordCompany->insertRecordCompany($name, $city, $rep, $email, $website);
 		$stat = "add";
-		header("Location:all_record_companies.php?stat=$stat");
+		if (isset($_POST['referrer'])) {
+			header('Location:../albums/add_album.php');
+		} else {
+			header("Location:all_record_companies.php?stat=$stat");
+		}
 	} catch (PDOException $e) {
 		echo '<br>PDO Exception Caught.';
 		echo 'Error with the database: <br>';
@@ -21,6 +25,10 @@ if (isset($_REQUEST['Submit'])) {
 	<form action="" class="form-horizontal" method="post" id="insert_record_company" name="insert_record_company">
 		<fieldset>
 			<legend>Please enter a record company</legend>
+			<?php if (isset($_GET['ref'])) {
+				$ref_page = $_GET['ref'];
+				echo "<input type='hidden' name='referrer' id='referrer' value='$ref_page'>";
+			} ?>
 			<div class="form-group">
 				<label for="company_name" class="col-sm-3 control-label">Company Name</label>
 				<div class="col-sm-9">
@@ -69,4 +77,5 @@ if (isset($_REQUEST['Submit'])) {
 	</form>
 	<?php
 }
+require_once '../../inc/scripts.inc.php';
 require_once '../../inc/foot.inc.php';
