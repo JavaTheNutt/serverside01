@@ -1,13 +1,12 @@
 <?php
-
 /*This will ensure that once the user has logged out, the querystring is removed so that a user can log in again*/
-if(isset($_GET['logout'])){
+if (isset($_GET['logout'])) {
 	$url = $_SERVER['REQUEST_URI'];
 	$parts = parse_url($url);
 	$url = $parts['path'];
 	header("Location:$url");
 }
-	?>
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -42,11 +41,11 @@ if(isset($_GET['logout'])){
 					<a class="btn btn-warning navbar-btn" href="all_albums.php"
 					   id="navButton3">Albums</a>
 					<?php
-						if(!LoggedIn()){
-							echo "<button class='btn btn-danger' id='loginButton'>Login</button>";
-						} else{
-							echo "<a class='btn btn-danger' href='".$_SERVER['PHP_SELF']."?logout=1'>Logout</a>";
-						}
+					if (!LoggedIn()) {
+						echo "<button class='btn btn-danger' id='loginButton'>Login</button>";
+					} else {
+						echo "<a class='btn btn-danger' href='" . $_SERVER['PHP_SELF'] . "?logout=1'>Logout</a>";
+					}
 					?>
 				</li>
 			</ul>
@@ -56,7 +55,7 @@ if(isset($_GET['logout'])){
 <div class="jumbotron text-center" id="jumbo">
 	<h1>Welcome to the Music Store</h1>
 </div>
-<div class="hidden" id="loginDiv">
+<div class="hidden col-sm-9 col-sm-offset-2" id="loginDiv" style="padding-bottom: 20px;">
 	<form action="<?php $_SERVER['PHP_SELF'] ?>" method="post" class="form-inline" role="form">
 		<div class="form-group">
 			<label class="sr-only" for="uname">label</label>
@@ -65,7 +64,7 @@ if(isset($_GET['logout'])){
 		<div class="form-group">
 			<div class="form-group">
 				<label for="password" class="sr-only">Password</label>
-					<input type="password" class="form-control" id="password" name="password" placeholder="Password">
+				<input type="password" class="form-control" id="password" name="password" placeholder="Password">
 			</div>
 		</div>
 		<button type="submit" class="btn btn-primary">Submit</button>

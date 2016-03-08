@@ -28,15 +28,15 @@ function displayFullCompanies($result)
 					<td><?php echo $row->website ?></td>
 					<td>
 						<?php
-						if(loggedIn()) {
-							echo "<a class='btn btn-default' href='edit_record_company.php?recordcompany=$compid'><span class='glyphicon glyphicon-edit'
+						if (loggedIn()) {
+							echo "<a class='btn btn-default' href='edit_record_company.php?recordcompany=$compid' title='Edit this Company'><span class='glyphicon glyphicon-edit'
 														 aria-hidden='true'></span> </a>";
-							echo "<a class='btn btn-default' href='delete_record_company.php?recordcompany=$compid'><span class='glyphicon glyphicon-trash'
+							echo "<a class='btn btn-default' href='delete_record_company.php?recordcompany=$compid' title='Delete this Company'><span class='glyphicon glyphicon-trash'
 														 aria-hidden='true'></span> </a>";
 						}
 						?>
 					</td>
-					<td><?php echo "<a class='btn btn-primary' href='all_albums.php?recordcompany=$compid'><span class='glyphicon glyphicon-search'> " ?></td>
+					<td><?php echo "<a class='btn btn-primary' href='all_albums.php?recordcompany=$compid'><span class='glyphicon glyphicon-search' title='Show albums produced by this company'> " ?></td>
 				</tr>
 				<?php
 			}

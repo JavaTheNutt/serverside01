@@ -4,17 +4,19 @@ class RecordCompany
 {
 	private $db;
 	public $formId;
+	public $formName;
 	public $fields = array('companyname' => 'Company Name', 'companycity' => 'Company City', 'representative' => 'Representative', 'representativeemail' => 'Representative Email', 'website' => 'Website');
 
 	public function __construct($database)
 	{
 		$this->db = $database;
 		$this->formId = 'recordSearchBox';
+		$this->formName = 'search_record_companies';
 	}
 
 	public function allRecordCompanies()
 	{
-		$sql = "SELECT * FROM recordcompanies";
+		$sql = "SELECT * FROM recordcompanies ORDER BY companyname";
 		$stmt = $this->db->prepare($sql);
 		$stmt->execute();
 		return $stmt->fetchAll(PDO::FETCH_OBJ);
@@ -33,7 +35,7 @@ class RecordCompany
 
 	public function findRecordCompanies($field, $value)
 	{
-		$sql = "SELECT * FROM recordcompanies WHERE $field LIKE :value";
+		$sql = "SELECT * FROM recordcompanies WHERE $field LIKE :value ORDER BY companyname";
 		$stmt = $this->db->prepare($sql);
 		$value = '%' . $value . '%';
 		$stmt->bindParam(':value', $value, PDO::PARAM_STR);
@@ -74,7 +76,7 @@ class RecordCompany
 
 	public function searchRecords($field, $value)
 	{
-		$stmt = $this->db->prepare("SELECT * FROM recordcompanies WHERE :field LIKE :val");
+		$stmt = $this->db->prepare("SELECT * FROM recordcompanies WHERE :field LIKE :val ORDER BY companyname");
 		$value = "%" . $value . "%";
 		$stmt->bindParam(':field', $field, PDO::PARAM_STR);
 		$stmt->bindParam(':val', $value, PDO::PARAM_STR);

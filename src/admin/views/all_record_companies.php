@@ -12,11 +12,15 @@ if (isset($_GET['stat'])) {
 		echo '<br><h2>Record Company deleted successfully</h2>';
 	}
 }
+if (!loggedIn()) {
+	echo '<h3>You are not logged in. Please log in for full functionality</h3>';
+}
 ?>
+
 <div class="row">
 	<div class="btn-group">
 		<?php
-		if(loggedIn()) {
+		if (loggedIn()) {
 			?>
 			<a class="btn btn-primary" href="add_record_company.php"><span class="glyphicon glyphicon-save"
 																		   style="margin-right: 10px"></span> Add a
@@ -27,38 +31,10 @@ if (isset($_GET['stat'])) {
 		<button class="btn btn-primary" id="showSearch"><span class="glyphicon glyphicon-search"></span> Search</button>
 	</div>
 </div>
-<div class="row hidden" id="recordSearchBox" style="margin-top: 20px; margin-bottom: 20px">
-	<form action="" method="post" name="search_record_companies" class="form-inline">
-		<div class="col-sm-6">
-			<div class="form-group">
-				<label for="attrSelect">Please select an attribute</label>
-				<select id="attrSelect" name="attrSelect" class="form-control">
-					<?php
-					foreach ($recordCompany->fields as $field => $fieldName) {
-						?>
-						<option value="<?php echo $field ?>"><?php echo $fieldName ?></option>
-						<?php
-					}
-					?>
-				</select>
-			</div>
-		</div>
-		<div class="col-sm-4">
-			<div class="form-group">
-				<label for="valSelect">Value</label>
-				<input type="text" id="valSelect" class="form-control" name="valSelect" required
-					   title="please enter a value">
-			</div>
-		</div>
-		<div class="col-sm-2">
-			<div class="form-group">
-				<button type="submit" name="Submit" class="btn btn-danger"><span
-						class="glyphicon glyphicon-search"></span> Submit
-				</button>
-			</div>
-		</div>
-	</form>
-</div>
+<?php
+$obj = $recordCompany;
+require '../inc/search.inc.php';
+?>
 <div class="row">
 	<?php
 	$count = 0;

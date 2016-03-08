@@ -3,10 +3,14 @@
 class Artist
 {
 	private $db;
-
+	public $fields = array('artistname' => 'Artist Name', 'city' => 'Artist City', 'website' => 'Website');
+	public $formName;
+	public $formId;
 	public function __construct($database)
 	{
 		$this->db = $database;
+		$this->formName = 'search_artists';
+		$this->formId = 'artistSearchBox';
 	}
 
 	public function allArtists()

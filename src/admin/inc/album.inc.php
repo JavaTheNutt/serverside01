@@ -3,10 +3,15 @@
 class Album
 {
 	private $db;
+	public $fields = array('albumname'=>'Album Name', 'year'=>'Release Year', 'genre'=>'Genre');
+	public $formName;
+	public $formId;
 
 	public function __construct($database)
 	{
 		$this->db = $database;
+		$this->formName = 'search_albums';
+		$this->formId = 'albumSearchBox';
 	}
 
 	public function allAlbums()
@@ -52,4 +57,5 @@ class Album
 		$stmt->execute();
 		return $stmt->fetchAll(PDO::FETCH_OBJ);
 	}
+
 }

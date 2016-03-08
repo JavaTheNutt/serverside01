@@ -23,10 +23,13 @@ function displayFullArtists($results)
 					<td><?php echo $row->website ?></td>
 					<td>
 						<?php
-						echo "<a class='btn btn-default' href='edit_artist.php?artist=$artistid'><span class='glyphicon glyphicon-edit' aria-hidden='true'></span> </a>";
-						echo "<a class='btn btn-default' href='delete_artist.php?artist=$artistid'><span class='glyphicon glyphicon-trash' aria-hidden='true'></span> </a>";
+						if (loggedIn()) {
+							echo "<a class='btn btn-default' href='edit_artist.php?artist=$artistid'><span class='glyphicon glyphicon-edit' aria-hidden='true' title='Edit this artist'></span> </a>";
+							echo "<a class='btn btn-default' href='delete_artist.php?artist=$artistid'><span class='glyphicon glyphicon-trash' aria-hidden='true' title='Delete this artist'></span> </a>";
+						}
 						?>
 					</td>
+					<td><?php echo "<a class='btn btn-primary' href='all_albums.php?artist=$artistid' title='Show albums by this artist'><span class='glyphicon glyphicon-search'></span> </a>" ?></td>
 				</tr>
 				<?php
 			}

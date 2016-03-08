@@ -15,16 +15,31 @@ if (isset($_GET['stat'])) {
 if (isset($_GET['recordcompany'])) {
 	$label = $_GET['recordcompany'];
 	$result = $album->getByLabel($label);
-} else {
+} elseif (isset($_GET['artist'])) {
+	$artist = $_GET['artist'];
+	$result = $album->getByArtist($artist);
+}else{
 	$result = $album->allAlbums();
 }
 $count = count($result);
 ?>
-	<div class="btn-group" style="margin-bottom: 20px;">
-		<a class="btn btn-primary" href="add_album.php"><span class="glyphicon glyphicon-save"></span> Add an
-			Album</a>
+
+	<div class="row">
+		<div class="btn-group" style="margin-bottom: 20px;">
+			<?php
+			if(loggedIn()) {
+				?>
+				<a class="btn btn-primary" href="add_album.php"><span class="glyphicon glyphicon-save"></span> Add an
+					Album</a>
+				<?php
+			}
+			?>
+			<button class="btn btn-primary" id="showAlbumSearch"><span class="glyphicon glyphicon-search"></span> Search</button>
+		</div>
 	</div>
 <?php
+$obj = $album;
+require '../inc/search.inc.php';
 if ($count > 0) {
 	displayAlbums($result);
 } else {
@@ -34,4 +49,13 @@ if ($count > 0) {
 
 <?php
 require_once '../inc/scripts.inc.php';
+?>
+<script>
+	$(document).ready(function () {
+		$('#showAlbumSearch').click(function () {
+			$('#albumSearchBox').toggleClass('hidden');
+		});
+	});
+</script>
+<?php
 require_once '../inc/foot.inc.php';
