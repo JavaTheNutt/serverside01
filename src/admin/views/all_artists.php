@@ -1,6 +1,7 @@
 <?php
-require_once '../../inc/init.inc.php';
-require_once '../../inc/head.inc.php';
+require '../inc/access.inc.php';
+require_once '../inc/init.inc.php';
+require_once '../inc/head.inc.php';
 if (isset($_GET['stat'])) {
 	$stat = $_GET['stat'];
 	if ($stat == 'add') {
@@ -24,5 +25,5 @@ if ($count > 0) {
 } else {
 	echo '<br>No artists';
 }
-require_once '../../inc/scripts.inc.php';
-require_once '../../inc/foot.inc.php';
+require_once '../inc/scripts.inc.php';
+require_once '../inc/foot.inc.php';

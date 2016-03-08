@@ -1,6 +1,7 @@
 <?php
-require_once '../../inc/init.inc.php';
-require_once '../../inc/head.inc.php';
+require '../inc/access.inc.php';
+require_once '../inc/init.inc.php';
+require_once '../inc/head.inc.php';
 if (isset($_REQUEST['Submit'])) {
 	$name = $_POST['artist_name'];
 	$city = $_POST['artist_city'];
@@ -59,5 +60,5 @@ if (isset($_REQUEST['Submit'])) {
 	</form>
 	<?php
 }
-require_once '../../inc/scripts.inc.php';
-require_once '../../inc/foot.inc.php';
+require_once '../inc/scripts.inc.php';
+require_once '../inc/foot.inc.php';

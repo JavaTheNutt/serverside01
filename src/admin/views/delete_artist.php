@@ -1,12 +1,12 @@
 <?php
-require_once '../../inc/init.inc.php';
-require_once '../../inc/head.inc.php';
+require '../inc/access.inc.php';
+require_once '../inc/init.inc.php';
+require_once '../inc/head.inc.php';
 if (isset($_REQUEST['Submit'])) {
 	try {
 		$id = $_POST['artistid'];
-		$website = $_POST['artist_website'];
-		$artist->updateArtist($id, $website);
-		$stat = 'edit';
+		$artist->deleteArtist($id);
+		$stat = 'delete';
 		header("Location:all_artists.php?stat=$stat");
 	} catch (PDOException $e) {
 		echo '<br>PDO Exception Caught.';
@@ -23,10 +23,9 @@ if (isset($_REQUEST['Submit'])) {
 		echo 'Error with the database: <br>';
 		echo 'Error: ' . $e->getMessage() . '</p>';
 	}
-
 }
 ?>
-	<form action="" class="form-horizontal" method="post" id="edit_artist" name="edit_artist">
+	<form action="" class="form-horizontal" method="post" id="delete_artist" name="delete_artist">
 		<fieldset>
 			<legend>Edit an artist</legend>
 			<input type="hidden" name="artistid" id="artistid" value="<?php echo $id ?>">
@@ -51,17 +50,17 @@ if (isset($_REQUEST['Submit'])) {
 					<input type="text" name="artist_website" id="artist_website" class="form-control" required
 						   pattern="https?://[a-zA-Z]{3}\.[a-zA-Z0-9]{2,}\.[a-zA-Z0-9]{2,}"
 						   value="<?php echo $artistwebsite ?>"
-						   title="Please enter a valid url">
+						   title="Please enter a valid url" disabled>
 				</div>
 			</div>
 			<div class="form-group">
 				<div class="col-sm-10 col-sm-offset-2">
-					<input type="submit" class="btn btn-primary" value="Insert Artist" name="Submit">
+					<input type="submit" class="btn btn-primary" value="Delete Artist" name="Submit">
 					<input type="reset" class="btn btn-primary" value="Clear the Info">
 				</div>
 			</div>
 		</fieldset>
 	</form>
 <?php
-require_once '../../inc/scripts.inc.php';
-require_once '../../inc/foot.inc.php';
+require_once '../inc/scripts.inc.php';
+require_once '../inc/foot.inc.php';

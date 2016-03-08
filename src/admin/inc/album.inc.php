@@ -37,4 +37,19 @@ class Album
 		return $stmt->fetch(PDO::FETCH_OBJ);
 	}
 
+	public function getByLabel($companyId)
+	{
+		$stmt = $this->db->prepare("SELECT albumid, albumname, year, genre, artist, recordcompany, companyname, artistname, albumartwork FROM albums JOIN artists ON albums.artist = artists.artistid JOIN recordcompanies ON albums.recordcompany = recordcompanies.companyid WHERE recordcompany = :companyId");
+		$stmt->bindParam(':companyId', $companyId, PDO::PARAM_INT);
+		$stmt->execute();
+		return $stmt->fetchAll(PDO::FETCH_OBJ);
+	}
+
+	public function getByArtist($artistId)
+	{
+		$stmt = $this->db->prepare("SELECT albumid, albumname, year, genre, artist, recordcompany, companyname, artistname, albumartwork FROM albums JOIN artists ON albums.artist = artists.artistid JOIN recordcompanies ON albums.recordcompany = recordcompanies.companyid WHERE artist = :artistId");
+		$stmt->bindParam('artistId', $artistId, PDO::PARAM_INT);
+		$stmt->execute();
+		return $stmt->fetchAll(PDO::FETCH_OBJ);
+	}
 }

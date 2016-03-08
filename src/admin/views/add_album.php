@@ -1,6 +1,7 @@
 <?php
-require_once '../../inc/init.inc.php';
-require_once '../../inc/head.inc.php';
+require '../inc/access.inc.php';
+require_once '../inc/init.inc.php';
+require_once '../inc/head.inc.php';
 if (isset($_REQUEST['Submit'])) {
 	$name = $_POST['album_name'];
 	$year = $_POST['album_year'];
@@ -71,7 +72,7 @@ if (isset($_REQUEST['Submit'])) {
 					</select>
 				</div>
 				<div class="col-sm-1">
-					<a href="../artists/add_artist.php?ref=album" class="btn btn-primary">Add Artist</a>
+					<a href="add_artist.php?ref=album" class="btn btn-primary">Add Artist</a>
 				</div>
 			</div>
 			<div class="form-group">
@@ -96,7 +97,7 @@ if (isset($_REQUEST['Submit'])) {
 					</select>
 				</div>
 				<div class="col-sm-1">
-					<a href="../record_companies/add_record_company.php?ref=album" class="btn btn-primary">Add Label</a>
+					<a href="add_record_company.php?ref=album" class="btn btn-primary">Add Label</a>
 				</div>
 			</div>
 			<div class="form-group">
@@ -109,5 +110,5 @@ if (isset($_REQUEST['Submit'])) {
 	</form>
 	<?php
 }
-require_once '../../inc/scripts.inc.php';
-require_once '../../inc/foot.inc.php';
+require_once '../inc/scripts.inc.php';
+require_once '../inc/foot.inc.php';

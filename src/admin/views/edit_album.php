@@ -1,6 +1,7 @@
 <?php
-require_once '../../inc/init.inc.php';
-require_once '../../inc/head_fluid.inc.php';
+require '../inc/access.inc.php';
+require_once '../inc/init.inc.php';
+require_once '../inc/head_fluid.inc.php';
 if (isset($_REQUEST['Submit'])) {
 
 } else {
@@ -61,7 +62,7 @@ if (isset($_REQUEST['Submit'])) {
 					</select>
 				</div>
 				<div class="col-sm-1">
-					<a href="../artists/add_artist.php?ref=edit_album" class="btn btn-primary" disabled="">Add
+					<a href="add_artist.php?ref=edit_album" class="btn btn-primary" disabled="">Add
 						Artist</a>
 				</div>
 			</div>
@@ -80,7 +81,7 @@ if (isset($_REQUEST['Submit'])) {
 					</select>
 				</div>
 				<div class="col-sm-1">
-					<a href="../record_companies/add_record_company.php?ref=edit_album" class="btn btn-primary"
+					<a href="add_record_company.php?ref=edit_album" class="btn btn-primary"
 					   disabled>Add Label</a>
 				</div>
 			</div>
@@ -96,5 +97,5 @@ if (isset($_REQUEST['Submit'])) {
 	</div>
 
 <?php
-require_once '../../inc/scripts.inc.php';
-require_once '../../inc/foot.inc.php';
+require_once '../inc/scripts.inc.php';
+require_once '../inc/foot.inc.php';

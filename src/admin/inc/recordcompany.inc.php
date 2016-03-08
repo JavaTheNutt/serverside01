@@ -4,7 +4,7 @@ class RecordCompany
 {
 	private $db;
 	public $formId;
-	public $fields = array('companyname'=> 'Company Name', 'companycity' => 'Company City', 'representative'=> 'Representative', 'representativeemail'=> 'Representative Email', 'website'=>'Website');
+	public $fields = array('companyname' => 'Company Name', 'companycity' => 'Company City', 'representative' => 'Representative', 'representativeemail' => 'Representative Email', 'website' => 'Website');
 
 	public function __construct($database)
 	{

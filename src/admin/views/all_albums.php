@@ -1,6 +1,7 @@
 <?php
-require_once '../../inc/init.inc.php';
-require_once '../../inc/head.inc.php';
+require '../inc/access.inc.php';
+require_once '../inc/init.inc.php';
+require_once '../inc/head.inc.php';
 if (isset($_GET['stat'])) {
 	$stat = $_GET['stat'];
 	if ($stat == 'add') {
@@ -11,7 +12,12 @@ if (isset($_GET['stat'])) {
 		echo '<br><h2>Album deleted successfully</h2>';
 	}
 }
-$result = $album->allAlbums();
+if (isset($_GET['recordcompany'])) {
+	$label = $_GET['recordcompany'];
+	$result = $album->getByLabel($label);
+} else {
+	$result = $album->allAlbums();
+}
 $count = count($result);
 ?>
 	<div class="btn-group" style="margin-bottom: 20px;">
@@ -27,5 +33,5 @@ if ($count > 0) {
 ?>
 
 <?php
-require_once '../../inc/scripts.inc.php';
-require_once '../../inc/foot.inc.php';
+require_once '../inc/scripts.inc.php';
+require_once '../inc/foot.inc.php';
