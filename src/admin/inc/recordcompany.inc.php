@@ -1,5 +1,4 @@
 <?php
-
 class RecordCompany
 {
 	private $db;

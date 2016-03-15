@@ -2,7 +2,7 @@
 require '../inc/access.inc.php';
 require_once '../inc/init.inc.php';
 require_once '../inc/head.inc.php';
-if (!loggedIn()) {
+if (!adminLoggedIn()) {
 	echo '<h4><strong>Your session has expired, please log in again or else return <a href="index.php">home</a> </strong></h4>';
 } else {
 

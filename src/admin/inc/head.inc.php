@@ -17,6 +17,7 @@ if (isset($_GET['logout'])) {
 	<link rel="stylesheet" href="../../../bower_components/bootstrap/dist/css/bootstrap.css">
 	<link rel="stylesheet" href="../../../bower_components/bootstrap/dist/css/bootstrap-theme.css">
 	<link rel="stylesheet" href="../../styles/applicationStyle.css">
+	<link rel="icon" href="../../../img/favicon.ico" type="image/x-icon">
 </head>
 <body>
 <div class="navbar navbar-inverse navbar-static-top" id="navBar">
@@ -41,7 +42,7 @@ if (isset($_GET['logout'])) {
 					<a class="btn btn-warning navbar-btn" href="all_albums.php"
 					   id="navButton3">Albums</a>
 					<?php
-					if (!LoggedIn()) {
+					if (!adminLoggedIn() || !custLoggedIn()) {
 						echo "<button class='btn btn-danger' id='loginButton'>Login</button>";
 					} else {
 						echo "<a class='btn btn-danger' href='" . $_SERVER['PHP_SELF'] . "?logout=1'>Logout</a>";
@@ -54,6 +55,13 @@ if (isset($_GET['logout'])) {
 </div>
 <div class="jumbotron text-center" id="jumbo">
 	<h1>Welcome to the Music Store</h1>
+	<?php
+	if(adminLoggedIn()){
+		?>
+		<p class="text-center">Administration</p>
+		<?php
+	}
+	?>
 </div>
 <div class="hidden col-sm-9 col-sm-offset-2" id="loginDiv" style="padding-bottom: 20px;">
 	<form action="<?php $_SERVER['PHP_SELF'] ?>" method="post" class="form-inline" role="form">

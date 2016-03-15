@@ -1,4 +1,5 @@
 <?php
+/*require 'access.inc.php';*/
 function displayFullArtists($results)
 {
 	?>
@@ -23,7 +24,7 @@ function displayFullArtists($results)
 					<td><?php echo $row->website ?></td>
 					<td>
 						<?php
-						if (loggedIn()) {
+						if (adminLoggedIn()) {
 							echo "<a class='btn btn-default' href='edit_artist.php?artist=$artistid'><span class='glyphicon glyphicon-edit' aria-hidden='true' title='Edit this artist'></span> </a>";
 							echo "<a class='btn btn-default' href='delete_artist.php?artist=$artistid'><span class='glyphicon glyphicon-trash' aria-hidden='true' title='Delete this artist'></span> </a>";
 						}

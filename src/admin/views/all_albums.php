@@ -22,12 +22,15 @@ if (isset($_GET['recordcompany'])) {
 	$result = $album->allAlbums();
 }
 $count = count($result);
+if(!adminLoggedIn()){
+	echo '<h3>You are not logged in. Please log in for full functionality</h3>';
+}
 ?>
 
 	<div class="row">
 		<div class="btn-group" style="margin-bottom: 20px;">
 			<?php
-			if(loggedIn()) {
+			if(adminLoggedIn()) {
 				?>
 				<a class="btn btn-primary" href="add_album.php"><span class="glyphicon glyphicon-save"></span> Add an
 					Album</a>

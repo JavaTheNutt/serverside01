@@ -8,11 +8,11 @@ if (isset($_GET['stat'])) {
 		echo '<br><h2>Record Company added successfully</h2>';
 	} elseif ($stat == 'edit') {
 		echo '<br><h2>Record Company edited successfully</h2>';
-	} elseif ($stat = 'delete') {
+	} elseif ($stat == 'delete') {
 		echo '<br><h2>Record Company deleted successfully</h2>';
 	}
 }
-if (!loggedIn()) {
+if (!adminLoggedIn() || !custLoggedIn()) {
 	echo '<h3>You are not logged in. Please log in for full functionality</h3>';
 }
 ?>
@@ -20,7 +20,7 @@ if (!loggedIn()) {
 <div class="row">
 	<div class="btn-group">
 		<?php
-		if (loggedIn()) {
+		if (adminLoggedIn()) {
 			?>
 			<a class="btn btn-primary" href="add_record_company.php"><span class="glyphicon glyphicon-save"
 																		   style="margin-right: 10px"></span> Add a

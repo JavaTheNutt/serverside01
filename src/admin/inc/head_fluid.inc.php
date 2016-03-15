@@ -1,3 +1,12 @@
+<?php
+/*This will ensure that once the user has logged out, the querystring is removed so that a user can log in again*/
+if (isset($_GET['logout'])) {
+	$url = $_SERVER['REQUEST_URI'];
+	$parts = parse_url($url);
+	$url = $parts['path'];
+	header("Location:$url");
+}
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,6 +17,7 @@
 	<link rel="stylesheet" href="../../../bower_components/bootstrap/dist/css/bootstrap.css">
 	<link rel="stylesheet" href="../../../bower_components/bootstrap/dist/css/bootstrap-theme.css">
 	<link rel="stylesheet" href="../../styles/applicationStyle.css">
+	<link rel="icon" href="../../../img/favicon.ico" type="image/x-icon">
 </head>
 <body>
 <div class="navbar navbar-inverse navbar-static-top" id="navBar">
@@ -27,10 +37,20 @@
 					<a class="btn btn-primary navbar-btn"
 					   href="all_record_companies.php"
 					   id="navButton1">Record Companies</a>
-					<a class="btn btn-danger navbar-btn" href="all_artists.php"
+					<a class="btn btn-success navbar-btn" href="all_artists.php"
 					   id="navButton2">Artists</a>
 					<a class="btn btn-warning navbar-btn" href="all_albums.php"
 					   id="navButton3">Albums</a>
+					<?php
+					if (!LoggedIn()) {
+						echo "<button class='btn btn-danger' id='loginButton'>Login</button>";
+					} else {
+						/*This will redirect to the current page but with the logout querystring. The querystring will be
+						gathered by the access script an dthe user will be logged out. The the url will be parsed by this page and the
+						querystring removed*/
+						echo "<a class='btn btn-danger' href='" . $_SERVER['PHP_SELF'] . "?logout=1'>Logout</a>";
+					}
+					?>
 				</li>
 			</ul>
 		</div>
@@ -38,5 +58,20 @@
 </div>
 <div class="jumbotron text-center" id="jumbo">
 	<h1>Welcome to the Music Store</h1>
+</div>
+<div class="hidden col-sm-9 col-sm-offset-2" id="loginDiv" style="padding-bottom: 20px;">
+	<form action="<?php $_SERVER['PHP_SELF'] ?>" method="post" class="form-inline" role="form">
+		<div class="form-group">
+			<label class="sr-only" for="uname">label</label>
+			<input type="text" class="form-control" name="uname" id="uname" placeholder="Username">
+		</div>
+		<div class="form-group">
+			<div class="form-group">
+				<label for="password" class="sr-only">Password</label>
+				<input type="password" class="form-control" id="password" name="password" placeholder="Password">
+			</div>
+		</div>
+		<button type="submit" class="btn btn-primary">Submit</button>
+	</form>
 </div>
 <div class="container-fluid">

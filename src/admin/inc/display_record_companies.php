@@ -28,7 +28,7 @@ function displayFullCompanies($result)
 					<td><?php echo $row->website ?></td>
 					<td>
 						<?php
-						if (loggedIn()) {
+						if (adminLoggedIn()) {
 							echo "<a class='btn btn-default' href='edit_record_company.php?recordcompany=$compid' title='Edit this Company'><span class='glyphicon glyphicon-edit'
 														 aria-hidden='true'></span> </a>";
 							echo "<a class='btn btn-default' href='delete_record_company.php?recordcompany=$compid' title='Delete this Company'><span class='glyphicon glyphicon-trash'
