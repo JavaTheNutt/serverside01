@@ -24,6 +24,11 @@ if (isset($_REQUEST['Submit'])) {
 		echo 'Error: ' . $e->getMessage() . '</p>';
 	}
 }
+if (!adminLoggedIn()) {
+	?>
+	<h3>You are not logged in. Please log in or return <a href="index.php">home</a></h3>
+	<?php
+} else {
 ?>
 	<form action="" class="form-horizontal" method="post" id="delete_record_company" name="delete_record_company">
 		<fieldset>
@@ -80,5 +85,6 @@ if (isset($_REQUEST['Submit'])) {
 		</fieldset>
 	</form>
 <?php
+	}
 require_once '../inc/scripts.inc.php';
 require_once '../inc/foot.inc.php';

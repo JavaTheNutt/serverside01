@@ -12,8 +12,8 @@ if (isset($_GET['stat'])) {
 		echo '<br><h2>Record Company deleted successfully</h2>';
 	}
 }
-if (!adminLoggedIn() || !custLoggedIn()) {
-	echo '<h3>You are not logged in. Please log in for full functionality</h3>';
+if (!adminLoggedIn() && !custLoggedIn()) {
+	echo '<h3>You are not logged in. Please log in for full functionality. If you do not have an account, please <a href="register_user.php">Register</a> </h3>';
 }
 ?>
 

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="dataSourceStorageLocal">
-    <data-source name="MySQL - musicstore@localhost" uuid="290628e4-cd4e-4c22-a141-d74924ccbde0">
-      <secret-storage>memory</secret-storage>
+    <data-source name="MySQL - musicstore@localhost" uuid="89b961fb-02f1-4331-adcc-a90553f8db8b">
+      <secret-storage>master_key</secret-storage>
       <user-name>root</user-name>
       <schema-pattern>musicstore.*</schema-pattern>
       <default-schemas>musicstore.*</default-schemas>

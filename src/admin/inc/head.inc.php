@@ -42,9 +42,10 @@ if (isset($_GET['logout'])) {
 					<a class="btn btn-warning navbar-btn" href="all_albums.php"
 					   id="navButton3">Albums</a>
 					<?php
-					if (!adminLoggedIn() || !custLoggedIn()) {
+					if (!adminLoggedIn() && !custLoggedIn()) {
 						echo "<button class='btn btn-danger' id='loginButton'>Login</button>";
 					} else {
+						/*var_dump($_SERVER['PHP_SELF']);*/
 						echo "<a class='btn btn-danger' href='" . $_SERVER['PHP_SELF'] . "?logout=1'>Logout</a>";
 					}
 					?>
@@ -79,3 +80,9 @@ if (isset($_GET['logout'])) {
 	</form>
 </div>
 <div class="container">
+	<?php
+if (custLoggedIn()){
+	?>
+	<h3>Welcome, <?php echo $_SESSION['custName']?></h3>
+	<?php
+}

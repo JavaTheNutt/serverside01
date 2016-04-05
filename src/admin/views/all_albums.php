@@ -22,7 +22,7 @@ if (isset($_GET['recordcompany'])) {
 	$result = $album->allAlbums();
 }
 $count = count($result);
-if(!adminLoggedIn()){
+if(!adminLoggedIn() && !custLoggedIn()){
 	echo '<h3>You are not logged in. Please log in for full functionality</h3>';
 }
 ?>

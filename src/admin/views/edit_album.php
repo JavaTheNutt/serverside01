@@ -15,7 +15,12 @@ if (isset($_REQUEST['Submit'])) {
 		echo 'Error: ' . $e->getMessage() . '</p>';
 	}
 }
-?>
+if (!adminLoggedIn()) {
+	?>
+	<h3>You are not logged in. Please log in or return <a href="index.php">home</a></h3>
+	<?php
+} else {
+	?>
 	<form action="" method="post" class="form-horizontal col-sm-9" id="insert_album" name="insert_album">
 		<fieldset>
 			<legend>Please enter an album</legend>
@@ -96,6 +101,7 @@ if (isset($_REQUEST['Submit'])) {
 		<img src="<?php echo $albumartwork ?>">
 	</div>
 
-<?php
+	<?php
+}
 require_once '../inc/scripts.inc.php';
 require_once '../inc/foot.inc.php';

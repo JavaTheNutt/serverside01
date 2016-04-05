@@ -26,9 +26,11 @@ if (isset($_POST['uname'])) {
 		$stmt->bindParam(':username', $username, PDO::PARAM_STR);
 		$stmt->bindParam(':pass', $password, PDO::PARAM_STR);
 		$stmt->execute();
+		$customer = $stmt->fetch(PDO::FETCH_OBJ);
 		$count = $stmt->rowCount();
 		if ($count == 1) {
 			$_SESSION['custLoggedIn'] = true;
+			$_SESSION['custName'] = $customer-> customername;
 		} else {
 			?>
 			<script>
@@ -39,7 +41,12 @@ if (isset($_POST['uname'])) {
 	}
 
 }
+/*function getCustname(){
+	$stmt = $dbh->prepare("SELECT customername FROM customers");
+	$stmt->execute();
+	return $stmt->fetch(PDO::FETCH_OBJ);
 
+}*/
 function adminLoggedIn()
 {
 	return isset($_SESSION['adminLoggedIn']);
@@ -48,7 +55,7 @@ function custLoggedIn(){
 	return isset($_SESSION['custLoggedIn']);
 }
 if (isset($_REQUEST['logout'])) {
-	unset($_SESSION['loggedIn']);
+	session_unset();
 	session_destroy();
 }
 
